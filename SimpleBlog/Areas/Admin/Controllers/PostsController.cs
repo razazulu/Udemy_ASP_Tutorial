@@ -2,11 +2,12 @@
 
 namespace SimpleBlog.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class PostsController : Controller
     {
         public ActionResult Index()
         {
-            return Content("Admin Posts!");
+            return Content("Admin only posts!");
         }
 	}
 }
