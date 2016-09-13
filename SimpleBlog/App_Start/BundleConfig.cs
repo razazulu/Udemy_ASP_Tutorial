@@ -1,4 +1,5 @@
 ﻿using System.Web.Optimization;
+using NHibernate.Mapping.ByCode;
 
 namespace SimpleBlog
 {
@@ -16,17 +17,19 @@ namespace SimpleBlog
                 .Include("~/content/styles/bootstrap.css")
                 .Include("~/content/styles/site.css"));
 
+            //Scripts
             bundles.Add(new ScriptBundle("~/admin/scripts")
-                .Include("~/scripts/styles/jquery-3.1.0.js")
-                .Include("~/scripts/styles/jquery-validate.js")
-                .Include("~/scripts/styles/jquery-validate.unobtrusive.js")
-                .Include("~/scripts/styles/bootstrap.js"));
-
+                .Include("~/scripts/jquery-3.1.0.js")
+                .Include("~/scripts/jquery-validate.js")
+                .Include("~/scripts/jquery-validate.unobtrusive.js")
+                .Include("~/scripts/bootstrap.js")
+                .Include("~/areas/admin/scripts/forms.js"));
+           
             bundles.Add(new ScriptBundle("~/scripts")
-                .Include("~/scripts/styles/jquery-3.1.0.js")
-                .Include("~/scripts/styles/jquery-validate.js")
-                .Include("~/scripts/styles/jquery-validate.unobtrusive.js")
-                .Include("~/scripts/styles/bootstrap.js"));
+                .Include("~/scripts/jquery-3.1.0.js")
+                .Include("~/scripts/jquery-validate.js")
+                .Include("~/scripts/jquery-validate.unobtrusive.js")
+                .Include("~/scripts/bootstrap.js"));
         }
     }
 }
