@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
@@ -16,7 +17,7 @@ namespace SimpleBlog.Models
         public virtual DateTime CreatedAt { get; set; }
         public virtual DateTime? UpdatedAt { get; set; }
         public virtual DateTime? DeletedAt { get; set; }
-
+        public virtual IList<Tag> Tags { get; set; }
         public virtual bool IsDeleted{get { return DeletedAt != null; }}
     }
 
@@ -46,6 +47,12 @@ namespace SimpleBlog.Models
 
             Property(x => x.UpdatedAt, x => x.Column("updated_at"));
             Property(x => x.DeletedAt, x => x.Column("deleted_at"));
+
+            Bag(x => x.Tags, x =>
+            {
+                x.Key(y => y.Column("post_id"));
+                x.Table("posts_tags");
+            }, x => x.ManyToMany(y => y.Column("tag_id")));
         }
     }
 }

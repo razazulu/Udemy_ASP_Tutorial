@@ -174,6 +174,7 @@
     <Compile Include="Infrastructure\SelectedTabAtrribute.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
     <Compile Include="Migrations\_001_UsersAndRoles.cs" />
+    <Compile Include="Migrations\_002_PostsAndTags.cs" />
     <Compile Include="Models\Posts.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Tag.cs" />

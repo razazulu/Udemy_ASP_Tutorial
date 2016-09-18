@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
+using NHibernate.Type;
 
 namespace SimpleBlog.Models
 {
@@ -10,7 +11,7 @@ namespace SimpleBlog.Models
         public virtual string Slug { get; set; }
         public virtual string Name { get; set; }
 
-        public virtual IList<Post> Post { get; set; }
+        public virtual IList<Post> Posts { get; set; }
     }
 
     public class TagMap : ClassMapping<Tag>
@@ -23,6 +24,12 @@ namespace SimpleBlog.Models
 
             Property(x => x.Name, x => x.NotNullable(true));
             Property(x => x.Slug, x => x.NotNullable(true));
+
+            Bag(x => x.Posts, x =>
+            {
+                x.Key(y => y.Column("tag_id"));
+                x.Table("posts_tags");
+            }, x=> x.ManyToMany(y=> y.Column("post_id")));
         }
     }
 }
