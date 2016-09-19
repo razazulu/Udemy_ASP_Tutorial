@@ -51,7 +51,7 @@ namespace SimpleBlog.Models
             Bag(x => x.Tags, x =>
             {
                 x.Key(y => y.Column("post_id"));
-                x.Table("posts_tags");
+                x.Table("post_tags");
             }, x => x.ManyToMany(y => y.Column("tag_id")));
         }
     }
